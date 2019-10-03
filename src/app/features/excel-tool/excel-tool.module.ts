@@ -5,6 +5,8 @@ import { ExcelToolRoutingModule } from './excel-tool-routing.module';
 import { OrderExtractareaComponent } from './components/order-extractarea/order-extractarea.component';
 import { SalaryWarehouseovertimeComponent } from './components/salary-warehouseovertime/salary-warehouseovertime.component';
 import { SalaryPickingperfComponent } from './components/salary-pickingperf/salary-pickingperf.component';
+import { SharedModule } from '@app/shared';
+import { OrderExtractareaService } from './services/order-extractarea.service';
 
 
 @NgModule({
@@ -12,7 +14,11 @@ import { SalaryPickingperfComponent } from './components/salary-pickingperf/sala
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    SharedModule,
     ExcelToolRoutingModule
+  ],
+  providers: [
+    OrderExtractareaService
   ]
 })
 export class ExcelToolModule { }

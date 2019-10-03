@@ -1,0 +1,23 @@
+div.redirect-container {
+  display: flex;
+  width: 60px;
+  flex-flow: row;
+  align-items: center;
+  padding-bottom: 0.3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a73e8;
+    padding-left: 0.2rem;
+  }
+}

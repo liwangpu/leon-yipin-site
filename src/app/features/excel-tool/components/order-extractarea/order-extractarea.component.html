@@ -1,12 +1,14 @@
 <div class="excel-tool">
+    <shared-home-redirect></shared-home-redirect>
     <div class="uploader-box">
+        <p class="form-title">订单流水按区域提取</p>
         <form name="extractForm" [formGroup]="extractForm">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label class="required" for="orderFile">订单流水</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="orderFile" name="orderFile"
-                            formControlName="orderFile">
+                            formControlName="orderFile" accept=".xlsx">
                         <label class="custom-file-label form-control-sm" for="orderFile"></label>
                     </div>
                 </div>
