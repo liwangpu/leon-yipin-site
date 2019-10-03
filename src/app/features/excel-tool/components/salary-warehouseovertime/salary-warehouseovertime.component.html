@@ -1,1 +1,39 @@
-<p>salary-warehouseovertime works!</p>
+<div class="excel-tool">
+    <shared-home-redirect></shared-home-redirect>
+    <div class="uploader-box">
+        <p class="form-title">仓库加班考勤统计</p>
+        <form name="overtimeForm" [formGroup]="overtimeForm" (ngSubmit)='overtimeCalcu()'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="required" for="orderFile">订单流水</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="signinFile" name="signinFile"
+                            formControlName="signinFile" accept=".xlsx" sharedSingleFileInput
+                            [labelControl]="orderFileLabelCt" #orderFiltCt>
+                        <label class="custom-file-label form-control-sm" for="signinFile" data-browse="浏览"
+                            #orderFileLabelCt></label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="required" for="month">月份</label>
+                    <input type="number" class="form-control form-control-sm" id="month" name="month" step="1" min=1
+                        max=12 formControlName="month">
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="submit" class="btn btn-primary" [disabled]='!overtimeForm.valid'>数据处理</button>
+                    <button type="button" class="btn btn-danger" (click)='overtimeFormReset()'>清空</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="metadata-des">
+        <h4 class="title">仓库加班考勤统计功能说明：</h4>
+        <p class="des">此小工具针对公司考勤软件中导出的打卡详情表格进行加班时间统计，具体统计方式此处不做说明</p>
+        <h4 class="title">使用说明:</h4>
+        <p class="des">1. 月份是考勤的月份信息（不一定是当月哦），是必填信息</p>
+        <p class="des warn">2. 考勤表格的格式很重要，表格一定要包含一张名称为“打卡时间”表（可以包含其他不相关的表），具体表格的列信息此处不做说明（如果公司导出的表格格式有变，请通知管理员修改软件）</p>
+    </div>
+</div>
+<shared-progress-reporter></shared-progress-reporter>

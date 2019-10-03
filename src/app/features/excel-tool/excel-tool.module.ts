@@ -8,6 +8,7 @@ import { SalaryPickingperfComponent } from './components/salary-pickingperf/sala
 import { SharedModule } from '@app/shared';
 import { OrderExtractareaService } from './services/order-extractarea.service';
 import { XlsxDownloaderService } from './services/xlsx-downloader.service';
+import { SalaryCalcuService } from './services/salary-calcu.service';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { XlsxDownloaderService } from './services/xlsx-downloader.service';
   ],
   providers: [
     OrderExtractareaService,
-    XlsxDownloaderService
+    XlsxDownloaderService,
+    SalaryCalcuService
   ]
 })
 export class ExcelToolModule { }

@@ -8,9 +8,6 @@ export class OrderExtractareaService {
   private get _URI() {
     return `${this.configSrv.APIServer}/api/orders`;
   }
-  private get _header() {
-    return new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
-  }
   constructor(protected httpClient: HttpClient, protected configSrv: AppConfigService) {
 
   }
