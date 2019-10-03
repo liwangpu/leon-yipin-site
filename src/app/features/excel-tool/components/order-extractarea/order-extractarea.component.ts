@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OrderExtractareaService } from '../../services/order-extractarea.service';
-import { SingleFileInputDirective } from '@app/shared';
+import { SingleFileBrowserDirective } from '@app/shared';
 import { FormGroupHelper } from '@app/core';
 import { XlsxDownloaderService } from '../../services/xlsx-downloader.service';
 import { UploaderBox } from '../../models/uploader-box';
 import { tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'excel-tool-order-extractarea',
@@ -15,11 +16,12 @@ import { tap } from 'rxjs/operators';
 export class OrderExtractareaComponent extends UploaderBox implements OnInit {
 
   extractForm: FormGroup;
-  @ViewChild(SingleFileInputDirective, { static: true }) orderFileCt: SingleFileInputDirective;
-  constructor(protected formBuilder: FormBuilder, protected extractSrv: OrderExtractareaService, protected xlsxDownloader: XlsxDownloaderService) {
-    super();
+  @ViewChild(SingleFileBrowserDirective, { static: true }) orderFileCt: SingleFileBrowserDirective;
+  constructor(protected formBuilder: FormBuilder, protected extractSrv: OrderExtractareaService, protected xlsxDownloader: XlsxDownloaderService,protected snackBar: MatSnackBar) {
+    super(snackBar);
     this.extractForm = this.formBuilder.group({
-      orderFile: ['', [Validators.required]]
+      _orderFile: ['', [Validators.required]]
+      , orderFile: ['']
       , area: ['', []]
     });
   }//constructor
@@ -41,6 +43,7 @@ export class OrderExtractareaComponent extends UploaderBox implements OnInit {
 
   onSingleAreaExtract() {
     this._showProgress();
+
     this.extractSrv.extractSingleArea(this.prepareFormData()).pipe(tap(this._progressAutomate)).subscribe(fileName => this.xlsxDownloader.downloadByElsxName(fileName));
   }//onSingleAreaExtract
 

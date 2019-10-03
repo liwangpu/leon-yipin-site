@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule, AppConfigService } from '@app/core';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -20,7 +21,8 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    CoreModule.forRoot()
+    CoreModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     {

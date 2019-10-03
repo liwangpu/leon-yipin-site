@@ -6,6 +6,7 @@ import { XlsxDownloaderService } from '../../services/xlsx-downloader.service';
 import { SingleFileInputDirective } from '@app/shared';
 import { FormGroupHelper } from '@app/core';
 import { tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'excel-tool-salary-pickingperf',
@@ -19,8 +20,8 @@ export class SalaryPickingperfComponent extends UploaderBox implements OnInit {
   }
   monthlyWorkingHoursForm: FormGroup;
   @ViewChildren(SingleFileInputDirective) filesCt!: QueryList<SingleFileInputDirective>;
-  constructor(protected formBuilder: FormBuilder, protected salarySrv: SalaryCalcuService, protected xlsxDownloader: XlsxDownloaderService) {
-    super();
+  constructor(protected formBuilder: FormBuilder, protected salarySrv: SalaryCalcuService, protected xlsxDownloader: XlsxDownloaderService,protected snackBar: MatSnackBar) {
+    super(snackBar);
     let month = new Date().getMonth();
     this.monthlyWorkingHoursForm = this.formBuilder.group({
       monthlyWorkingHoursFile: ['', [Validators.required]]

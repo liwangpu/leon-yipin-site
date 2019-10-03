@@ -9,7 +9,13 @@ import { SharedModule } from '@app/shared';
 import { OrderExtractareaService } from './services/order-extractarea.service';
 import { XlsxDownloaderService } from './services/xlsx-downloader.service';
 import { SalaryCalcuService } from './services/salary-calcu.service';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
 
 @NgModule({
   declarations: [OrderExtractareaComponent, SalaryWarehouseovertimeComponent, SalaryPickingperfComponent],
@@ -17,12 +23,20 @@ import { SalaryCalcuService } from './services/salary-calcu.service';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    ExcelToolRoutingModule
+    ExcelToolRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [
     OrderExtractareaService,
     XlsxDownloaderService,
-    SalaryCalcuService
+    SalaryCalcuService,
+    { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ]
 })
 export class ExcelToolModule { }

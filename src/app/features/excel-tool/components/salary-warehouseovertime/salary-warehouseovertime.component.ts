@@ -6,6 +6,7 @@ import { SalaryCalcuService } from '../../services/salary-calcu.service';
 import { XlsxDownloaderService } from '../../services/xlsx-downloader.service';
 import { FormGroupHelper } from '@app/core';
 import { tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'excel-tool-salary-warehouseovertime',
@@ -16,8 +17,8 @@ export class SalaryWarehouseovertimeComponent extends UploaderBox implements OnI
 
   overtimeForm: FormGroup;
   @ViewChild(SingleFileInputDirective, { static: true }) signinFileCt: SingleFileInputDirective;
-  constructor(protected formBuilder: FormBuilder, protected salarySrv: SalaryCalcuService, protected xlsxDownloader: XlsxDownloaderService) {
-    super();
+  constructor(protected formBuilder: FormBuilder, protected salarySrv: SalaryCalcuService, protected xlsxDownloader: XlsxDownloaderService, protected snackBar: MatSnackBar) {
+    super(snackBar);
     let month = new Date().getMonth();
     this.overtimeForm = this.formBuilder.group({
       signinFile: ['', [Validators.required]]
