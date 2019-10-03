@@ -1,1 +1,53 @@
-<p>salary-pickingperf works!</p>
+<div class="excel-tool">
+    <shared-home-redirect></shared-home-redirect>
+    <div class="uploader-box">
+        <p class="form-title">月上班时间信息</p>
+        <form name="monthlyWorkingHoursForm" [formGroup]="monthlyWorkingHoursForm"
+            (ngSubmit)='uploadMonthlyWorkingHours()'>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="required" for="monthlyWorkingHoursFile">月上班时间表</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="monthlyWorkingHoursFile"
+                            name="monthlyWorkingHoursFile" formControlName="monthlyWorkingHoursFile" accept=".xlsx"
+                            sharedSingleFileInput [labelControl]="monthlyWorkingHoursFileLabelCt"
+                            #monthlyWorkingHoursFileCt>
+                        <label class="custom-file-label form-control-sm" for="monthlyWorkingHoursFile" data-browse="浏览"
+                            #monthlyWorkingHoursFileLabelCt></label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="required" for="month">月份</label>
+                    <input type="number" class="form-control form-control-sm" id="month" name="month" step="1" min=1
+                        max=12 formControlName="month">
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <p class="form-tip">该数据每个月上传一次就好了不用每天都上传，不过如果不确定是否上传过或者数据有改动，再来一次也可以</p>
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]='!monthlyWorkingHoursForm.valid'>数据上传</button>
+                    <button type="button" class="btn btn-danger" (click)='monthlyWorkingHoursFormReset()'>清空</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="metadata-des">
+
+    </div>
+</div>
+<!-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        Hello, world! This is a toast message.
+    </div>
+</div> -->
+<shared-progress-reporter></shared-progress-reporter>

@@ -5,9 +5,13 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class SingleFileInputDirective {
 
+  private _name: string;
   private _file: any;
   get file(): any {
     return this._file;
+  }
+  get name(): string {
+    return this._name;
   }
   @Input() labelControl: HTMLElement;
   @HostListener('change') onFileChange() {
@@ -19,7 +23,9 @@ export class SingleFileInputDirective {
     if (this.labelControl)
       this.labelControl.innerHTML = fileName;
   }
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {
+    this._name = this.el.nativeElement.name;
+  }//constructor
 
   reset() {
     this._file = null;

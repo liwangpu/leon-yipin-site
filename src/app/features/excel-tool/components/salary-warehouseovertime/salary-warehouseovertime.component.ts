@@ -37,7 +37,7 @@ export class SalaryWarehouseovertimeComponent extends UploaderBox implements OnI
     let formData = FormGroupHelper.toFormData(this.overtimeForm);
     formData.append('signinFile', this.signinFileCt.file, this.signinFileCt.file.name);
     this._showProgress();
-    this.salarySrv.warehouseOvertimeCalcu(formData).pipe(tap(this._progressAutomate)).subscribe(fileName => this.xlsxDownloader.downloadByElsxName(fileName));
+    this.salarySrv.calcuWarehouseOvertime(formData).pipe(tap(this._progressAutomate)).subscribe(fileName => this.xlsxDownloader.downloadByElsxName(fileName));
   }//overtimeCalcu
 
 }

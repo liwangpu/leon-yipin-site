@@ -12,8 +12,12 @@ export class SalaryCalcuService {
 
   }//constructor
 
-  warehouseOvertimeCalcu(data: any) {
+  calcuWarehouseOvertime(data: any) {
     return this.httpClient.post(`${this._URI}/WarehouseOvertime`, data, { responseType: "text" });
-  }//warehouseOvertimeCalcu
+  }//calcuWarehouseOvertime
+
+  uploadMonthlyWorkingHours(data: any) {
+    return this.httpClient.post(`${this._URI}/MonthlyWorkingHours`, data, { responseType: "text" });
+  }//uploadMonthlyWorkingHours
 
 }

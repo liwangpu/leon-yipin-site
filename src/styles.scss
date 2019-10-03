@@ -27,9 +27,7 @@ div.excel-tool {
     p.form-title {
       font-size: 1rem;
       font-weight: 600;
-      // color: #007bff;
       margin: 0;
-      // padding: 0 0 0.2rem;
       &::after {
         content: "：";
       }
@@ -40,6 +38,16 @@ div.excel-tool {
         &::after {
           content: "*";
         }
+      }
+    }
+    p.form-tip {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding-left: 2rem;
+      color: orange;
+      &::before {
+        content: "● ";
       }
     }
   }

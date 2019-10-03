@@ -9,9 +9,9 @@
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="signinFile" name="signinFile"
                             formControlName="signinFile" accept=".xlsx" sharedSingleFileInput
-                            [labelControl]="orderFileLabelCt" #orderFiltCt>
+                            [labelControl]="signinFileLabelCt">
                         <label class="custom-file-label form-control-sm" for="signinFile" data-browse="浏览"
-                            #orderFileLabelCt></label>
+                            #signinFileLabelCt></label>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
@@ -22,7 +22,7 @@
             </div>
             <div class="d-flex flex-row justify-content-end">
                 <div class="btn-group btn-group-sm" role="group">
-                    <button type="submit" class="btn btn-primary" [disabled]='!overtimeForm.valid'>数据处理</button>
+                    <button type="submit" class="btn btn-primary" [disabled]='!overtimeForm.valid'>数据上传</button>
                     <button type="button" class="btn btn-danger" (click)='overtimeFormReset()'>清空</button>
                 </div>
             </div>
