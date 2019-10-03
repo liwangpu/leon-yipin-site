@@ -16,7 +16,7 @@ export class OrderExtractareaService {
   }
 
   extractSingleArea(data: any) {
-    return this.httpClient.post<string>(`${this._URI}/ExtractSingleArea`, data, { headers: this._header });
+    return this.httpClient.post(`${this._URI}/ExtractSingleArea`, data, { responseType: "text" });
   }//extractSingleArea
 
 }

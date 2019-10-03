@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OrderExtractareaService } from '../../services/order-extractarea.service';
+import { SingleFileInputDirective } from '@app/shared';
+import { FormGroupHelper } from '@app/core';
 
 @Component({
   selector: 'excel-tool-order-extractarea',
@@ -10,6 +12,7 @@ import { OrderExtractareaService } from '../../services/order-extractarea.servic
 export class OrderExtractareaComponent implements OnInit {
 
   extractForm: FormGroup;
+  @ViewChild(SingleFileInputDirective, { static: true }) orderFileCt: SingleFileInputDirective;
   constructor(protected formBuilder: FormBuilder, protected extractSrv: OrderExtractareaService) {
     this.extractForm = this.formBuilder.group({
       orderFile: ['', [Validators.required]]
@@ -22,9 +25,10 @@ export class OrderExtractareaComponent implements OnInit {
   }//ngOnInit
 
   onSingleAreaExtract() {
-    console.log(1, this.extractForm.value);
+    let formData = FormGroupHelper.toFormData(this.extractForm);
+    formData.append('orderFile', this.orderFileCt.file, this.orderFileCt.file.name);
 
-    this.extractSrv.extractSingleArea(this.extractForm.value).subscribe(path => {
+    this.extractSrv.extractSingleArea(formData).subscribe(path => {
       console.log(2, path);
     });
   }//onSingleAreaExtract
