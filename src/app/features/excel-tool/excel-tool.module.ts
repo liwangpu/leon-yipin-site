@@ -14,8 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
+import { MAT_LABEL_GLOBAL_OPTIONS, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [OrderExtractareaComponent, SalaryWarehouseovertimeComponent, SalaryPickingperfComponent],
@@ -29,14 +30,17 @@ import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
     MatButtonToggleModule,
     MatButtonModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     OrderExtractareaService,
     XlsxDownloaderService,
     SalaryCalcuService,
     { provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: { float: 'always' } },
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+    {provide: MAT_DATE_LOCALE, useValue: 'zh-cn'},
   ]
 })
 export class ExcelToolModule { }

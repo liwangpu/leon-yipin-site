@@ -2,29 +2,27 @@
     <shared-home-redirect></shared-home-redirect>
     <div class="uploader-box">
         <p class="form-title">仓库加班考勤统计</p>
-        <form name="overtimeForm" [formGroup]="overtimeForm" (ngSubmit)='overtimeCalcu()'>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label class="required" for="orderFile">订单流水</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="signinFile" name="signinFile"
-                            formControlName="signinFile" accept=".xlsx" sharedSingleFileInput
-                            [labelControl]="signinFileLabelCt">
-                        <label class="custom-file-label form-control-sm" for="signinFile" data-browse="浏览"
-                            #signinFileLabelCt></label>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="required" for="month">月份</label>
-                    <input type="number" class="form-control form-control-sm" id="month" name="month" step="1" min=1
-                        max=12 formControlName="month">
-                </div>
+        <form name="overtimeForm" [formGroup]="overtimeForm">
+            <input type="file" name="signinFile" accept=".xlsx" class="hidden" sharedSingleFileBrowser
+                (fileSelect)="overtimeForm.get('_signinFile').setValue($event)" #signinFileCt>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>考勤表</mat-label>
+                    <input matInput type="text" name="_signinFile" formControlName="_signinFile" readonly required
+                        placeholder="点击选择文件" (click)='signinFileCt.click()' #_signinFileCt>
+                </mat-form-field>
             </div>
-            <div class="d-flex flex-row justify-content-end">
-                <div class="btn-group btn-group-sm" role="group">
-                    <button type="submit" class="btn btn-primary" [disabled]='!overtimeForm.valid'>数据上传</button>
-                    <button type="button" class="btn btn-danger" (click)='overtimeFormReset()'>清空</button>
-                </div>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>月份</mat-label>
+                    <input matInput type="number" name="month" formControlName="month" step="1" required #monthCt>
+                </mat-form-field>
+            </div>
+            <div class="form-buttons">
+                <mat-button-toggle-group>
+                    <mat-button-toggle [disabled]='!overtimeForm.valid' (click)='overtimeCalcu()'>数据上传
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
             </div>
         </form>
     </div>

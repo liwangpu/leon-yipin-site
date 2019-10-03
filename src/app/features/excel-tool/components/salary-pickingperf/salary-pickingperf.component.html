@@ -1,36 +1,74 @@
 <div class="excel-tool">
     <shared-home-redirect></shared-home-redirect>
+    
     <div class="uploader-box">
         <p class="form-title">月上班时间信息</p>
         <form name="monthlyWorkingHoursForm" [formGroup]="monthlyWorkingHoursForm"
             (ngSubmit)='uploadMonthlyWorkingHours()'>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label class="required" for="monthlyWorkingHoursFile">月上班时间表</label>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="monthlyWorkingHoursFile"
-                            name="monthlyWorkingHoursFile" formControlName="monthlyWorkingHoursFile" accept=".xlsx"
-                            sharedSingleFileInput [labelControl]="monthlyWorkingHoursFileLabelCt"
-                            #monthlyWorkingHoursFileCt>
-                        <label class="custom-file-label form-control-sm" for="monthlyWorkingHoursFile" data-browse="浏览"
-                            #monthlyWorkingHoursFileLabelCt></label>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="required" for="month">月份</label>
-                    <input type="number" class="form-control form-control-sm" id="month" name="month" step="1" min=1
-                        max=12 formControlName="month">
-                </div>
+            <input type="file" name="monthlyWorkingHoursFile" accept=".xlsx" class="hidden" sharedSingleFileBrowser
+                (fileSelect)="monthlyWorkingHoursForm.get('_monthlyWorkingHoursFile').setValue($event)"
+                #monthlyWorkingHoursFileCt>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>月工作时间表</mat-label>
+                    <input matInput type="text" name="_monthlyWorkingHoursFile"
+                        formControlName="_monthlyWorkingHoursFile" readonly required placeholder="点击选择文件"
+                        (click)='monthlyWorkingHoursFileCt.click()' #_monthlyWorkingHoursFileCt>
+                </mat-form-field>
             </div>
-            <div class="d-flex flex-row justify-content-between">
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>月份</mat-label>
+                    <input matInput type="number" name="month" formControlName="month" required>
+                </mat-form-field>
+            </div>
+            <div class="form-buttons">
                 <p class="form-tip">该数据每个月上传一次就好了不用每天都上传，不过如果不确定是否上传过或者数据有改动，再来一次也可以</p>
-                <div class="btn-group btn-group-sm" role="group">
-                    <button type="submit" class="btn btn-primary"
-                        [disabled]='!monthlyWorkingHoursForm.valid'>数据上传</button>
-                    <button type="button" class="btn btn-danger" (click)='monthlyWorkingHoursFormReset()'>清空</button>
-                </div>
+                <mat-button-toggle-group>
+                    <mat-button-toggle [disabled]='!monthlyWorkingHoursForm.valid'
+                        (click)='uploadMonthlyWorkingHours()'>数据上传
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
             </div>
+        </form>
+    </div>
 
+    <div class="uploader-box">
+        <p class="form-title">当天绩效计算</p>
+        <form name="dailyPerfForm" [formGroup]='dailyPerfForm'>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>张数定值</mat-label>
+                    <input matInput type="number" name="paperAmount" formControlName="paperAmount" required>
+                </mat-form-field>
+            </div>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>张数占比</mat-label>
+                    <input matInput type="number" name="paperRate" formControlName="paperRate" required>
+                </mat-form-field>
+            </div>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>数量定值</mat-label>
+                    <input matInput type="number" name="pickingAmount" formControlName="pickingAmount" required>
+                </mat-form-field>
+            </div>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>数量占比</mat-label>
+                    <input matInput type="number" name="pickingRate" formControlName="pickingRate" required>
+                </mat-form-field>
+            </div>
+            <div class="form-item">
+                <mat-form-field>
+                    <mat-label>绩效日期</mat-label>
+                    <input matInput [matDatepicker]="pickingDate" name="pickingDate" formControlName="pickingDate"
+                        required>
+                    <mat-datepicker-toggle matSuffix [for]="pickingDate"></mat-datepicker-toggle>
+                    <mat-datepicker #pickingDate></mat-datepicker>
+                </mat-form-field>
+            </div>
         </form>
     </div>
     <div class="metadata-des">
