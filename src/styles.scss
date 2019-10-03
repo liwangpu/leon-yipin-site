@@ -1,3 +1,4 @@
+@import "./styles.bootstrap.scss";
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
@@ -11,4 +12,67 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+div.excel-tool {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  div.uploader-box {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    label {
+      &.required {
+        color: blue;
+        &::after {
+          content: "*";
+        }
+      }
+    }
+  }
+  div.metadata-des {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    p,
+    h4 {
+      padding: 0;
+      margin: 0;
+    }
+
+    .title {
+      padding: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .des {
+      text-indent: 1rem;
+    }
+
+    .warn {
+      color: red;
+    }
+
+    table.field-des {
+      width: 100%;
+      border: 1px solid #d0d0d0;
+      border-collapse: collapse;
+      margin-bottom: 0.5rem;
+    }
+
+    table.field-des td {
+      border: 1px solid #d0d0d0;
+      padding: 0.1rem;
+      font-size: 0.8rem;
+    }
+
+    table.field-des td.title {
+      padding: 0.2rem 1rem;
+      color: orange;
+    }
+  }
 }

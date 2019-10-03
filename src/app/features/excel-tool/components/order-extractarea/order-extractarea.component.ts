@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'excel-tool-order-extractarea',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderExtractareaComponent implements OnInit {
 
-  constructor() { }
+  extractForm: FormGroup;
+  constructor(protected formBuilder: FormBuilder) {
+    this.extractForm = this.formBuilder.group({
+      orderFile: ['', [Validators.required]]
+      , area: ['', []]
+    });
+  }//constructor
 
   ngOnInit() {
-  }
+
+  }//ngOnInit
+
+  onSingleAreaExtract() {
+    console.log(1, this.extractForm.value);
+  }//onSingleAreaExtract
+
+  onMixtureAreaExtract(){
+
+  }//onMixtureAreaExtract
 
 }

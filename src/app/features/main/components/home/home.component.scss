@@ -1,0 +1,21 @@
+div.page {
+  padding: 1rem;
+  p.helpTip {
+    text-align: right;
+    color: gray;
+    padding: 0 0 .3rem;
+    margin: 0;
+  }
+  table.tool {
+    width: 100%;
+    border-collapse: collapse;
+    th:first-of-type {
+      width: 300px;
+    }
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      padding: 0.3rem;
+    }
+  }
+}
