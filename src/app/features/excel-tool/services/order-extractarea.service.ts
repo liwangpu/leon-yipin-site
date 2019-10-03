@@ -19,4 +19,8 @@ export class OrderExtractareaService {
     return this.httpClient.post(`${this._URI}/ExtractSingleArea`, data, { responseType: "text" });
   }//extractSingleArea
 
+  extractMixtureArea(data: any) {
+    return this.httpClient.post(`${this._URI}/ExtractMixtureArea`, data, { responseType: "text" });
+  }//extractSingleArea
+
 }

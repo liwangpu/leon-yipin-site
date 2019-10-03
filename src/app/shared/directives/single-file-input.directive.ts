@@ -1,5 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[sharedSingleFileInput]'
@@ -22,4 +21,9 @@ export class SingleFileInputDirective {
   }
   constructor(private el: ElementRef) { }
 
+  reset() {
+    this._file = null;
+    if (this.labelControl)
+      this.labelControl.innerHTML = "";
+  }//reset
 }

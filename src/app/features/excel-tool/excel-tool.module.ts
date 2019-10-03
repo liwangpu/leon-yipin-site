@@ -7,6 +7,7 @@ import { SalaryWarehouseovertimeComponent } from './components/salary-warehouseo
 import { SalaryPickingperfComponent } from './components/salary-pickingperf/salary-pickingperf.component';
 import { SharedModule } from '@app/shared';
 import { OrderExtractareaService } from './services/order-extractarea.service';
+import { XlsxDownloaderService } from './services/xlsx-downloader.service';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { OrderExtractareaService } from './services/order-extractarea.service';
     ExcelToolRoutingModule
   ],
   providers: [
-    OrderExtractareaService
+    OrderExtractareaService,
+    XlsxDownloaderService
   ]
 })
 export class ExcelToolModule { }

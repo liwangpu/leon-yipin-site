@@ -1,13 +1,11 @@
-$custom-file-text: (
-  zh: "浏览"
-);
-
-@import "../node_modules/bootstrap/scss/bootstrap";
-
 label.custom-file-label.form-control-sm {
   height: calc(1.5em + 0.5rem + 2px) !important;
   &::after {
     height: calc(1.5em + 0.5rem);
     padding: 0.25rem 0.75rem;
   }
+}
+
+label {
+  margin-bottom: 0.3rem;
 }
